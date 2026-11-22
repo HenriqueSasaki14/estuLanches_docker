@@ -4,7 +4,7 @@ Cardápio online e fila de pedidos para a cantina da escola. O aluno pede pelo c
 
 **Problema que resolve:** fila no intervalo, pedido anotado em papel, erro de troco/total e produto vendido sem estoque.
 
-> Vídeo de apresentação: _[link do vídeo]_
+> Vídeo de apresentação: https://youtu.be/U9D5V3mOEbY
 
 ## Arquitetura
 
