@@ -21,7 +21,7 @@ css: |-
 | **Sistema** | EstuLanches — cardápio online e fila de pedidos da cantina escolar |
 | **Responsável** | Henrique Sasaki — Técnico de Implantação |
 | **Tipo de mudança** | Normal — implantação inicial (nova aplicação em produção via Docker Compose) |
-| **Versão implantada** | v1.0.0 · imagem `estulanches-app:1.0.0` (ID `sha256:2c79e2270b9a`) · commit `PREENCHER-HASH` |
+| **Versão implantada** | v1.0.0 · imagem `estulanches-app:1.0.0` (ID `sha256:2c79e2270b9a`) · commit `3f82318` |
 | **Início / fim** | 22/11/2026 · 12:53 – 12:56 (horário de Brasília) |
 | **Ambiente** | Windows 11 Pro + Docker Desktop (WSL2, linux/amd64) · Docker Engine 29.9.3 · Docker Compose v5.7.0 · Node 22.23.5 · PostgreSQL 16.16 |
 | **Serviços** | `app` (Fastify + front React, porta 3000) e `db` (postgres:16-alpine, sem porta publicada, volume `pgdata`) |
