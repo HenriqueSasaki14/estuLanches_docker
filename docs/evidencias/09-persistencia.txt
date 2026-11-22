@@ -1,0 +1,53 @@
+# Teste de persistência — 2026-11-22 12:55:39
+
+## ANTES — pedidos no banco
+ id | status | total |          email          | qtd_produtos | estoque_coxinha 
+----+--------+-------+-------------------------+--------------+-----------------
+  1 | PRONTO | 18.00 | aluno@estulanches.local |            9 |              38
+(1 row)
+
+## docker compose down (SEM -v: o volume pgdata é mantido)
+ Container estulanches-app-1 Stopping 
+ Container estulanches-app-1 Stopped 
+ Container estulanches-app-1 Removing 
+ Container estulanches-app-1 Removed 
+ Container estulanches-db-1 Stopping 
+ Container estulanches-db-1 Stopped 
+ Container estulanches-db-1 Removing 
+ Container estulanches-db-1 Removed 
+ Network estulanches_backend Removing 
+ Network estulanches_web Removing 
+ Network estulanches_backend Resource is still in use 
+ Network estulanches_web Removed 
+
+## Volume continua existindo:
+DRIVER    VOLUME NAME
+local     estulanches_pgdata
+
+## docker compose up -d
+ Container estulanches-db-1 Creating 
+ Network estulanches_web Creating 
+ Network estulanches_web Creating 
+ Network estulanches_web Created 
+ Network estulanches_web Created 
+ Container estulanches-db-1 Created 
+ Container estulanches-app-1 Creating 
+ Container estulanches-app-1 Created 
+ Container estulanches-db-1 Starting 
+ Container estulanches-db-1 Started 
+ Container estulanches-db-1 Waiting 
+ Container estulanches-db-1 Healthy 
+ Container estulanches-app-1 Starting 
+ Container estulanches-app-1 Started 
+app healthy após ~9s
+
+## DEPOIS — pedidos no banco
+ id | status | total |          email          | qtd_produtos | estoque_coxinha 
+----+--------+-------+-------------------------+--------------+-----------------
+  1 | PRONTO | 18.00 | aluno@estulanches.local |            9 |              38
+(1 row)
+
+## Via API: GET /api/health
+{"status":"ok","db":"up"}
+
+Conclusão: o pedido #1 (PRONTO, R$ 18,00) sobreviveu ao down/up; o seed reexecutado não duplicou produtos nem alterou o estoque.
